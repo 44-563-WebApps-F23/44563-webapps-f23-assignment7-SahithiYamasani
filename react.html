@@ -16,7 +16,7 @@
     <div id="counter">Count</div>
 
 
-  <input type="button" value="Start Timer">
+  <input id ="start-button" type="button" value="Start Timer">
   <input id="react-button" type ="button" value="React">
   
   <script> 
@@ -31,6 +31,37 @@ function recordTime()
 
 // Set the onclick property of the "react" button
 document.getElementById("react-button").onclick = recordTime;
+
+function startTime() {
+    // Step 2: Use a loop to invoke setTimeout 9 times
+    for (var i = 0; i < 9; i++) {
+        // Step 3: Use setTimeout to update the countdown display
+        setTimeout(function (count) {
+            return function () {
+                document.getElementById("counter").innerHTML = count;
+            };
+        }(i), (8 - i) * 1000);
+    }
+
+    // Step 6: Evaluate user's reaction time
+    setTimeout(function () {
+        // Step 6c: Check if reactTime is undefined
+        if (typeof reactTime === "undefined") {
+            // User was too slow
+            document.getElementById("target").innerHTML = "Too Slow";
+        } else {
+            // Step 6d: Calculate elapsed time
+            var endTime = Date.now();
+            var elapsedTime = endTime - reactTime;
+
+            // Step 6f: Display the result
+            document.getElementById("target").innerHTML = "Time was " + elapsedTime + "ms";
+        }
+    }, 8000);
+}
+
+// Step 1: Set the onclick property of the "Start Timer" button
+document.getElementById("start-button").onclick = startTime;
   </script>
 
 </body>
