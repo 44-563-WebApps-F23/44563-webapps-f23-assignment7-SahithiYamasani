@@ -41,50 +41,30 @@
 	
 </body>
 <script>
-    // Step 6: Add JavaScript code for adding elements at the end of the container
         document.getElementById("addEndButton").addEventListener("click", function () {
-        // Get the value from the input element
         var inputValue = document.getElementById("textInput").value;
-
-        // Create a new div element
         var newDiv = document.createElement("div");
-
-        // Set the innerHTML of the new element to the input value
         newDiv.innerHTML = inputValue;
-
-        // Set the className property of the new element to "merger"
         newDiv.className = "merger";
-
-        // Append the new element to the container
         document.querySelector(".flex-container").appendChild(newDiv);
     });
 
     document.getElementById("removeButton").addEventListener("click", function () {
-            // Step 3: Get all elements with class "merger"
+           
             var mergerItems = document.getElementsByClassName("merger");
-
-            // Step 4: Get the length of mergerItems
             var length = mergerItems.length;
-
-            // Step 4: Check if length is greater than 0 and remove the middle item
             if (length > 0) {
                 var middleIndex = Math.floor(length / 2);
                 mergerItems[middleIndex].remove();
             }
         });
 
-        // Step 5: Define the addFront() function
         document.getElementById("addFrontButton").addEventListener("click", function () {
-            // Step 7: Create the new element
             var inputValue = document.getElementById("textInput").value;
             var newDiv = document.createElement("div");
             newDiv.innerHTML = inputValue;
             newDiv.className = "merger";
-
-            // Step 8: Get the container div
             var container = document.querySelector(".flex-container");
-
-            // Step 9: Add the new element to the front
             container.insertBefore(newDiv, container.firstChild);
         });
 </script>

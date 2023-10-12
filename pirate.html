@@ -130,14 +130,15 @@ margin: 0px;}
 
         checkCount++;
         penalty++;
-        document.getElementById("locations").textContent = "Locations Checked: " + checkCount;
+        document.getElementById("locations").textContent = 
+        "Locations Checked: " + checkCount;
 
         if (position === treasureLocation) {
             gameOver = true;
-            penalty -= 3; // Subtract three from the penalty.
+            penalty -= 3; 
         } else if (position === trapLocation) {
             gameOver = true;
-            penalty += 4; // Add four to the penalty.
+            penalty += 4; 
         }
         document.getElementById("penalty").textContent = "Penalty: " + penalty;
 
@@ -145,39 +146,31 @@ margin: 0px;}
     };
 
     function calculateHelp(lastLocation, treasureLocation) {
-    // Calculate row and col for last location and treasure
     var lastRow = Math.floor(lastLocation / 5);
     var lastCol = lastLocation % 5;
     var treasureRow = Math.floor(treasureLocation / 5);
     var treasureCol = treasureLocation % 5;
-
-    // Calculate the absolute differences in row and col
     var rowDiff = Math.abs(lastRow - treasureRow);
     var colDiff = Math.abs(lastCol - treasureCol);
 
     if ((rowDiff <= 1 && colDiff <= 1) && (rowDiff !== 0 || colDiff !== 0)) {
-        // Can smell it
+        
         return "Can Smell It";
     } else if (rowDiff + colDiff === 2) {
-        // Close Matie
+        
         return "Close Matie";
     } else {
-        // Step Faster
+       
         return "Step Faster";
     }
 }
-
-// Step 13: Set the onClick property of the "Click for help" element to invoke the help function.
 document.getElementById("help-button").onclick = function () {
     var helpText = calculateHelp(lastCheck, treasureLocation);
 
-    // Step 13i: Add two to the penalty.
     penalty += 2;
 
-    // Step 13j: Update the text on the element with id "penalty".
     document.getElementById("penalty").textContent = "Penalty: " + penalty;
 
-    // Step 13k: Update the text on the element with id "help".
     document.getElementById("help").textContent = "Help: " + helpText;
 };
 
