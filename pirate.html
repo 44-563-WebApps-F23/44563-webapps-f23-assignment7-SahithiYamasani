@@ -97,6 +97,7 @@ margin: 0px;}
         <div class="col"><img id ='23' src="location.jpg" alt="Location" onclick = "check(23)" height="80px" width="80px"></div>
         <div class="col"><img id ='24' src="location.jpg" alt="Location" onclick = "check(24)" height="80px" width="80px"></div>
     </div>
+    <input type="button" id="new-game-button" value="New Button">
 </center>
 </div>
 
@@ -172,6 +173,15 @@ document.getElementById("help-button").onclick = function () {
     document.getElementById("penalty").textContent = "Penalty: " + penalty;
 
     document.getElementById("help").textContent = "Help: " + helpText;
+};
+document.getElementById("new-game-button").onclick= function () {
+   trapLocation = Math.floor(Math.random() * 25);
+   treasureLocation = Math.floor(Math.random() * 25);
+    penalty=0;
+    checkCount=0;
+    document.getElementById("penalty").textContent = "Penalty: " + penalty;
+    document.getElementById("locations").textContent = 
+        "Locations Checked: " + checkCount;
 };
 
 </script>
